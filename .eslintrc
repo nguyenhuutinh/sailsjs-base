@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": false,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "allowImportExportEverywhere": true,
+    "sourceType": "module",
+    "ecmaVersion": 10
+  },
+  "rules": {
+    "no-multiple-empty-lines": [
+      2,
+      {
+        "max": 2,
+        "maxEOF": 1
+      }
+    ],
+    "no-mixed-operators": 0,
+    "no-debugger": 0,
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
+    "semi": ["warn", "always"],
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "space-in-parens": ["warn", "always"],
+    "sort-keys": ["warn", "asc"]
+  },
+  "extends": "standard",
+  "plugins": ["html"],
+  "globals": {
+    "MailerService": "readonly",
+    "sails": "readonly",
+    "_": "readonly"
+  }
+}
