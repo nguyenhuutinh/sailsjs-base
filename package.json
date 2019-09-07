@@ -17,6 +17,8 @@
     "sails": "^1.2.3",
     "sails-hook-orm": "^2.1.1",
     "sails-hook-sockets": "^2.0.0",
+    "sails-mongo": "^1.0.1",
+    "sendgrid": "^5.2.3",
     "uuid": "^3.3.3",
     "validator": "^11.1.0"
   },
@@ -31,6 +33,9 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "scripts": {
+    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development node --experimental-modules app.js",
+    "staging": "NODE_ENV=staging node --experimental-modules app.js",
+    "production": "npm run start",
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",

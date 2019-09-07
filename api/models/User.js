@@ -82,6 +82,5 @@ module.exports = {
    * Should be used with _.omit();
    * @type {Array}
    */
-  omissions: ['isSuperAdmin', 'password', 'verificationHash'],
-  schema: true
+  omissions: ['isSuperAdmin', 'password', 'verificationHash']
 };
