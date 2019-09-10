@@ -13,3 +13,7 @@ This is a base SailsJS API application that is already setup for basic JWT authe
 # Login and Account Creation
 
 Login is based on a magic link and not a password. This can be easily changed in the `api/controller/AuthController` if desired.
+
+# Testing
+
+Tests can be run with `npm run test`.

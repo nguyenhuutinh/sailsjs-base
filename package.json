@@ -30,7 +30,11 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^6.2.0",
+    "node-mongodb-fixtures": "^3.0.8",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   },
   "scripts": {
     "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development node --experimental-modules app.js",
@@ -39,15 +43,15 @@
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "MONGO_URI=mongodb://localhost:27017/ PORT=9999 NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.js ./api/controllers/**/*.spec.js ./api/models/**/*.spec.js ./api/services/**/*.spec.js ./api/helpers/**/*.spec.js"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/ching/sailsjs-base.git"
   },
-  "author": "ching",
-  "license": "",
+  "author": "linuxdream",
+  "license": "MIT",
   "engines": {
     "node": "^10.16"
   }

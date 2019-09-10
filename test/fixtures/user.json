@@ -1,0 +1,14 @@
+[
+  {
+    "email": "test@testemail.com",
+    "firstName": "Test",
+    "lastName": "User",
+    "username": "tester",
+    "password": "$2a$10$EE2PE6hmi4OxILVP3.sZY.CpuSst94B4LBThMIGv5cD4BoZKZRUOe",
+    "isEnabled": true,
+    "linkAccountRequest": {
+      "verificationHash": "thisisaverificationhash"
+    },
+    "_comment": "DO NOT REMOVE THIS USER FROM THIS POSITION!!!!!"
+  }
+]

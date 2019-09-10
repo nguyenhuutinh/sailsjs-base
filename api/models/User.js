@@ -2,7 +2,7 @@
  * User
  * @description :: Model for storing users
  */
-/* globals CipherService, User */
+/* globals CipherService */
 module.exports = {
   attributes: {
     address: {

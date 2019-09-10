@@ -80,3 +80,6 @@ module.exports.jwtSettings = {
   issuer: ISSUER,
   secret: SECRET
 };
+
+module.exports.issuer = ISSUER;
+module.exports.audience = AUDIENCE;
