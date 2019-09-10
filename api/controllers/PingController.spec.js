@@ -4,11 +4,9 @@ describe( 'PingController', () => {
       .supertest( sails.hooks.http.app )
       .get( '/ping' )
       .expect( 200 )
-      .then( async res => {
+      .then( () => {
         done();
       } )
-      .catch( err => {
-        done( err );
-      } );
+      .catch( done );
   } );
 } );

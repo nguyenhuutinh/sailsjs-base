@@ -1,9 +1,5 @@
 /* global User */
 describe( 'AuthController', () => {
-  // before( done => {
-  //   sails.testData.login( done );
-  // } );
-
   it( 'signin: should test signin', done => {
     sails.testData
       .supertest( sails.hooks.http.app )
@@ -12,12 +8,27 @@ describe( 'AuthController', () => {
         email: sails.testData.fixtures.user[0].email,
         password: sails.testData.testUser.password
       } )
-      .expect( 200 )
       .then( res => {
         sails.testData.should( res.body.token ).not.be.null();
         sails.testData.should( res.body.user ).have.property( 'email', sails.testData.fixtures.user[0].email );
+        done();
       } )
-      .finally( done );
+      .catch( done );
+  } );
+
+  it( 'signin: should test bad signin', done => {
+    sails.testData
+      .supertest( sails.hooks.http.app )
+      .post( '/auth/signin' )
+      .send( {
+        email: sails.testData.fixtures.user[0].email,
+        password: 'this should not work'
+      } )
+      .expect( 403 )
+      .then( res => {
+        done();
+      } )
+      .catch( done );
   } );
 
   it( 'signup: should test the signup process', done => {
@@ -37,8 +48,10 @@ describe( 'AuthController', () => {
 
         sails.testData.should( testUser ).not.be.null();
         sails.testData.should( testUser.email ).equal( sails.testData.testUser.email );
+
+        done();
       } )
-      .finally( done );
+      .catch( done );
   } );
 
   it( 'sendMagicLink: should test DB password change of magic link.', done => {
@@ -53,7 +66,9 @@ describe( 'AuthController', () => {
 
         // Reset the fixtures
         await sails.testData.clearFixtures();
+
+        done();
       } )
-      .finally( done );
+      .catch( done );
   } );
 } );
