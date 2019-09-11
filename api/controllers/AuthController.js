@@ -72,6 +72,7 @@ module.exports = {
         // TODO: Update the login email info!
         subject: 'Magic Link!',
         templateData: {
+          // TODO: Change this destination.
           link: `${sails.config.urls.fe_url}/#/validate?e=${encodeURI( user.email )}&p=${encodeURI( randomPass )}`,
           user: user
         },

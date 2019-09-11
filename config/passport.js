@@ -11,9 +11,9 @@ const EXPIRES_IN_MINUTES = 500000;
 const ALGORITHM = 'HS256';
 
 // TODO: Change these before deploying!
-const SECRET = process.env.passport_tokenSecret || 'PZ*gTBGHLdotZyM*@M.MkYKFpkabPYNU!2@r';
-const ISSUER = process.env.passport_issuer || 'yoursite.com';
-const AUDIENCE = process.env.passport_audience || 'yoursite.com';
+const SECRET = process.env.PASSPORT_TOKENSECRET || 'PZ*gTBGHLdotZyM*@M.MkYKFpkabPYNU!2@r';
+const ISSUER = process.env.PASSPORT_ISSUER || 'yoursite.com';
+const AUDIENCE = process.env.PASSPORT_AUDIENCE || 'yoursite.com';
 
 /**
  * Configuration object for local strategy
