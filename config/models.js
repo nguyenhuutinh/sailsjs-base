@@ -18,6 +18,6 @@ module.exports.models = {
     // TODO: Change this!
     default: 'SI10NuNCsVt911AAgNUy//tYHWYlo5c5g5zIFOWxBls='
   },
-  migrate: 'safe',
+  migrate: 'alter',
   schema: true
 };

@@ -16,6 +16,7 @@
     "passport-local": "^1.0.0",
     "sails": "^1.2.3",
     "sails-hook-orm": "^2.1.1",
+    "sails-hook-slugs": "^2.1.0",
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^1.0.1",
     "sendgrid": "^4.7.1",
@@ -31,13 +32,14 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "forever": "^1.0.0",
     "mocha": "^6.2.0",
     "node-mongodb-fixtures": "^3.0.8",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development node --experimental-modules app.js",
+    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development forever -w --watchIgnore 'upload/**'  app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
     "production": "npm run start",
     "start": "NODE_ENV=production node app.js",
@@ -53,6 +55,6 @@
   "author": "linuxdream",
   "license": "MIT",
   "engines": {
-    "node": "^10.16"
+    "node": "^11.11"
   }
 }

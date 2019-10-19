@@ -34,8 +34,7 @@ module.exports = {
       type: 'string'
     },
     password: {
-      defaultsTo: '',
-      required: false,
+      required: true,
       type: 'string'
     },
     settings: {
@@ -58,6 +57,7 @@ module.exports = {
       values.password = CipherService.createRandomID();
     }
 
+    // console.log('password', values.password)
     CipherService.hashPassword( values );
 
     values = _.omit( values, this.omissions );

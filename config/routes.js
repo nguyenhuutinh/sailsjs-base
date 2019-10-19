@@ -11,17 +11,37 @@
 
 module.exports.routes = {
   // Auth Routes
-  'post /auth/signup': 'AuthController.signup',
-  'post /auth/signin': 'AuthController.signin',
-  'get /auth/sendMagicLink': 'AuthController.sendMagicLink',
+  'post /api/auth/signup': 'AuthController.signup',
+  'post /api/auth/signin': 'AuthController.signin',
+  'post /api/auth/logout': 'AuthController.logout',
 
   // User Routes
-  'get /user': 'UserController.getSelf',
-  'patch /user': 'UserController.update',
-  'get /user/:id': 'UserController.findOne',
-  'patch /user/:id': 'UserController.update',
-  'delete /user/:id': 'UserController.destroy',
+  'get /api/user/me': 'UserController.getSelf',
+  'patch /api/user': 'UserController.update',
+  'get /api/user/:id': 'UserController.findOne',
+  'patch /api/user/:id': 'UserController.update',
+  'delete /api/user/:id': 'UserController.destroy',
 
+  // Posts
+  'get /api/posts': 'PostController.list',
+  'post /api/post': 'PostController.create',
+  'put /api/post/:id': 'PostController.update',
+  'post /api/post/:id/icon': 'PostController.uploadAppIcon',
+  'get /api/post/:id/icon': 'PostController.getAppIcon',
+  'post /api/post/:id/screenshot': 'PostController.uploadAppScreenshot',
+  'get /api/images/*': 'PostController.getAppScreenshot',
+  'get /api/post': 'PostController.get',
+  'get /api/post/:id': 'PostController.get',
+  'delete /api/post/:id': 'PostController.delete',
+  // Category
+  'get /api/categories': 'CategoryController.list',
+  'post /api/category': 'CategoryController.create',
+
+  'post /api/category/:id/screenshot': 'CategoryController.uploadCatScreenshot',
+  
+  'put /api/category/:id': 'CategoryController.update',
+  'get /api/category/:id': 'CategoryController.get',
+  'delete /api/category/:id': 'CategoryController.delete',
   // Ping Route
-  'get /ping': 'PingController.ping'
+  'get /api/ping': 'PingController.ping'
 };

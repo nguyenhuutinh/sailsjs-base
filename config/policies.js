@@ -13,6 +13,11 @@ module.exports.policies = {
   AuthController: {
     '*': true
   },
+  PostController: {
+    '*': true,
+    'create': 'isAuthenticated',
+    'uploadFeature': 'isAuthenticated'
+  },
   PingController: {
     '*': true
   }

@@ -86,6 +86,6 @@ before( done => {
 } );
 
 after( done => {
-  console.log();
+  // console.log();
   sails.lower( done );
 } );

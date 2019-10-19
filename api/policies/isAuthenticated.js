@@ -19,6 +19,7 @@ module.exports = function main ( req, res, next ) {
       .then( user => {
         req.user = user;
         next();
+        return true;
       } )
       .catch( err => {
         return res.serverError( err );

@@ -28,16 +28,17 @@ async function _onPassportAuth ( req, res, error, user, info ) {
   user.audience = sails.config.audience;
 
   // Generate new random pass
-  const randomPass = CipherService.createRandomID();
+  // const randomPass = CipherService.createRandomID();
 
-  // Update the password. Doesn't have to be sync
-  await User.update( user.id, {
-    password: randomPass
-  } );
+  // // Update the password. Doesn't have to be sync
+  // await User.update( user.id, {
+  //   password: randomPass
+  // } );
 
-  return res.json( {
+  return res.status(200).json({
     token: CipherService.createToken( user ),
-    user: _.omit( user, User.omissions )
+    user: _.omit( user, User.omissions ),
+    currentAuthority: user.isSuperAdmin ? 'admin': 'user'
   } );
 }
 
@@ -59,13 +60,13 @@ module.exports = {
     }
 
     // Generate random pass
-    const randomPass = CipherService.createRandomID();
+    const randomPass = "abcd1234";
 
     // Update the user's account and wait!
     await User.update( user.id, {
       password: randomPass
     } );
-
+    // console.log(sails.config.urls.fe_url)
     // Send the email
     MailerService.send(
       {
@@ -73,6 +74,7 @@ module.exports = {
         subject: 'Magic Link!',
         templateData: {
           // TODO: Change this destination.
+          
           link: `${sails.config.urls.fe_url}/#/validate?e=${encodeURI( user.email )}&p=${encodeURI( randomPass )}`,
           user: user
         },
@@ -98,7 +100,15 @@ module.exports = {
   signin ( req, res ) {
     passport.authenticate( 'local', _onPassportAuth.bind( this, req, res ) )( req, res );
   },
-
+  logout: function(req, res) {
+    
+    req.logout();
+    req.session.destroy(function(err) {
+      
+      res.clearCookie('sails.sid');
+      return res.ok()
+    })
+  },
   /**
    * Sign up in system
    * @param {Object} req Request object
@@ -107,6 +117,7 @@ module.exports = {
   async signup ( req, res ) {
     const username = req.param( 'username' );
     const email = req.param( 'email' );
+    const password = req.param( 'password' );
 
     // TODO: Uncomment if you want to collect a password and use it below
     // const password = req.param('password');
@@ -126,7 +137,7 @@ module.exports = {
     }
 
     // TODO: Replace with a passed in password if desired.
-    const newPassword = CipherService.createRandomID();
+    const newPassword = password;
 
     const newUser = await User.create( {
       email: email,
