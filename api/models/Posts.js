@@ -31,6 +31,17 @@ module.exports = {
       via: 'post',
       // dominant: true
     },
+    categories: {
+      collection: 'category',
+      via: 'posts',
+      // dominant: true
+    },
+    versions: {
+      collection: 'appversion',
+      via: 'post',
+      // dominant: true
+    },
+    
     appAuthor:{
       type: 'string',
       minLength: 1
@@ -112,11 +123,7 @@ module.exports = {
     archive: {
       model: 'archives',
     },
-    // /*article to category is a one-to-many association*/
-    category: {
-      model: 'category',
-      required: false
-    }
+   
 
   },
   beforeCreate: function(obj, next){

@@ -18,9 +18,14 @@ module.exports = {
       unique: true,
       // defaultsTo: "未分类"
     },
+    previewText: {
+      type: 'string',
+      required: false,
+      minLength: 1
+    },
     posts: {
       collection: 'posts',
-      via: 'category'
+      via: 'categories'
     },
     numOfArticles:{
       type:'number',
@@ -32,7 +37,7 @@ module.exports = {
     },
   },
   beforeCreate: function(obj, next){
-    Posts.count().exec(function(err, cnt){
+    Category.count().exec(function(err, cnt){
         if(err) next();
         else{
             obj['no'] = cnt + 1;

@@ -27,6 +27,7 @@ module.exports.routes = {
   'post /api/post': 'PostController.create',
   'put /api/post/:id': 'PostController.update',
   'post /api/post/:id/icon': 'PostController.uploadAppIcon',
+  'post /api/post/:id/version': 'PostController.addAppVersion',
   'get /api/post/:id/icon': 'PostController.getAppIcon',
   'post /api/post/:id/screenshot': 'PostController.uploadAppScreenshot',
   'get /api/images/*': 'PostController.getAppScreenshot',

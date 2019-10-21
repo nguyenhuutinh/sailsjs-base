@@ -112,6 +112,10 @@ module.exports = {
             var appScreenshotFd = uploadedFiles[0].fd
             var url = baseUrl + appScreenshot
             Posts.findOne({ id: req.param('id') }).exec(function (err, post) {
+                if(err){
+                    return res.serverError(err)
+                }
+                
                 PostsService.createScreenshot(req,res, appScreenshot, url, appScreenshotFd, post)
                 // Posts.update({ id: req.params.id }, {
                 //     appScreenshot : (post.appScreenshot || [] ).push(appScreenshot),
@@ -126,7 +130,22 @@ module.exports = {
             
         });
     },
-    
+    addAppVersion: function(req, res){
+        Posts.findOne({ id: req.param('id') }).exec(function (err, post) {
+            if(err){
+                return res.serverError(err)
+            }
+            let version = {}
+                if (req) {
+                    version.release_note = req.body.release_note;
+                    version.version = req.body.version;
+                    version.version_name = req.body.version_name;
+                    version.download_link1 = req.body.download_link1;
+                    version.download_link2 = req.body.download_link2;
+                }
+            AppVersionService.createVersion(req,res, version.version, version.version, version.release_note, version.download_link1, version.download_link2, post)
+        })
+    },
     /**
      * Download avatar of the user with the specified id
      *
@@ -212,7 +231,7 @@ module.exports = {
     get: (req, res) => {
 
         if (req.query.slug) {
-            Posts.findOne({ slug: req.query.slug }).populate('owner').exec((err, data) => {
+            Posts.findOne({ slug: req.query.slug }).populate('screenshot').populate('versions').populate('categories').exec((err, data) => {
                 // console.log("get", req.query.slug)
                 if (err) return res.send(500, { error: 'db error' });   
                 // console.log("data",data)
@@ -220,7 +239,7 @@ module.exports = {
                 return res.json(_data   )
             })
         }else{
-            Posts.findOne({ id: req.params.id }).populate('screenshot').exec((err, data) => {
+            Posts.findOne({ id: req.params.id }).populate('screenshot').populate('versions').populate('categories').exec((err, data) => {
                 console.log("get", data)
                 if (err) return res.send(500, { error: 'db error' });
                 var _data = data
@@ -243,13 +262,13 @@ module.exports = {
     update: (req, res) => {
         let q = req.allParams();
         // console.log(q)
-        let newData = { title: req.body.title, content: req.body.content, appAuthor: req.body.author, appstoreLink: req.body.appstore_link, previewText: req.body.previewText, rate: req.body.rate, price: req.body.price };
-
-
-        Posts.update({ id: req.params.id }, newData).exec((err) => {
+        let newData = { title: req.body.title, content: req.body.content, appAuthor: req.body.author, appstoreLink: req.body.appstore_link, previewText: req.body.previewText, rate: req.body.rate, price: req.body.price, categories: req.body.categories };
+        Posts.findOne({ id: req.params.id }).exec((err, post) => {
             if (err) res.send(500, { error: 'db error' });
-            res.ok()
+            PostsService.updatePost( req , res, post, newData)
+
         })
+       
     }
 
 };

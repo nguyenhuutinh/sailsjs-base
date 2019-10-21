@@ -1,19 +1,12 @@
 /**
- * CategoryController
+ * AppVersionController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-    list: function (req, res) {
-        var perPage = req.query.limit;
-        var currentPage = req.query.page;
-
-        var conditions = { };
-        PaginationService.paginate(res, Category, conditions, currentPage, perPage, [], 'createdAt DESC');
-
-    },
+    
     uploadCatScreenshot: function (req, res) {
         console.log(sails.config.appPath)
         req.file('attach').upload({
@@ -60,16 +53,19 @@ module.exports = {
     },
     create: (req, res) => {
         // console.log(req.user)
-        let blog = {}
+        let version = {}
         if (req) {
-            blog.name = req.body.name;
-            blog.previewText = req.body.previewText;
+            version.release_note = req.body.release_note;
+            version.version = req.body.version;
+            version.version_name = req.body.version_name;
+            version.download_link1 = req.body.download_link1;
+            version.download_link2 = req.body.download_link2;
         }
         
-        Category.create(blog).exec((err) => {
+        AppVersion.create(version).exec((err) => {
             console.log(err)
             if (err) res.status(500).send({ error: 'Db error' });
-            res.status(200).json(blog)
+            res.status(200).json(version)
         })
 
     },

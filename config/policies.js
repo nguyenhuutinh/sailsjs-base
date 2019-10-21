@@ -18,6 +18,16 @@ module.exports.policies = {
     'create': 'isAuthenticated',
     'uploadFeature': 'isAuthenticated'
   },
+  CategoryController: {
+    '*': true,
+    'create': 'isAuthenticated',
+    'uploadFeature': 'isAuthenticated'
+  },
+  AppVersionController: {
+    '*': true,
+    'create': 'isAuthenticated',
+    'uploadFeature': 'isAuthenticated'
+  },
   PingController: {
     '*': true
   }
