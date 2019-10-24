@@ -76,7 +76,7 @@ module.exports = {
     get: (req, res) => {
 
         if (req.query.slug) {
-            Category.findOne({ slug: req.query.slug }).populate('owner').exec((err, data) => {
+            Category.findOne({ slug: req.query.slug }).populate('owner').populate('posts').exec((err, data) => {
                 // console.log("get", req.query.slug)
                 if (err) return res.send(500, { error: 'db error' });   
                 // console.log("data",data)
@@ -84,7 +84,7 @@ module.exports = {
                 return res.json(_data   )
             })
         }else{
-            Category.findOne({ id: req.params.id }).populate('screenshot').exec((err, data) => {
+            Category.findOne({ id: req.params.id }).populate('screenshot').populate('posts').exec((err, data) => {
                 console.log("get", data)
                 if (err) return res.send(500, { error: 'db error' });
                 var _data = data

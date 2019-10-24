@@ -25,14 +25,15 @@ module.exports = {
     var {categories} = newdata
     
     if (categories && categories.length > 0) {
-      console.log("aaa")
-      await Category.addToCollection(categories[0], 'posts', [post.id]);
+      
+      var res2 = await Category.replaceCollection(categories[0], 'posts', [post.id]);
+      console.log("aaa", res2)
       // await Promise.all(categories.map((record, index) => {
       //   this.anAsyncFunction(record, post.id)
       // }))
       // try{
         
-        var resp = await Posts.addToCollection(post.id, 'categories').members(categories  );
+        var resp = await Posts.replaceCollection(post.id, 'categories').members(categories  );
       //   console.log(resp)
       // }catch(error){
       //   return res.status(400).send(error.message);
