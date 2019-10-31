@@ -41,7 +41,7 @@
   "scripts": {
     "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development forever -w --watchIgnore 'upload/**'  app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
-    "production": "npm run start",
+    "production": "forever npm run start",
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
