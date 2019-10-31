@@ -57,5 +57,5 @@ module.exports = {
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
   },
-  sockets: {}
+  sockets: {  onlyAllowOrigins: ["http://www.http://vps264672.vps.ovh.ca/", "http://fullmacapp.com"]}
 };
