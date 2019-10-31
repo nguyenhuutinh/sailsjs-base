@@ -55,6 +55,6 @@
   "author": "linuxdream",
   "license": "MIT",
   "engines": {
-    "node": "^11.11"
+    "node": "^12.13"
   }
 }
