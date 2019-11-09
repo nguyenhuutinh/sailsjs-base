@@ -16,7 +16,7 @@
     "passport-local": "^1.0.0",
     "sails": "^1.2.3",
     "sails-hook-orm": "^2.1.1",
-    "sails-hook-slugs": "^4.0.1-beta.0",
+    "sails-hook-slugs": "^2.1.0",
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^1.0.1",
     "sendgrid": "^4.7.1",
@@ -39,10 +39,10 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development app.js",
+    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development node --experimental-modules app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
     "production": "forever npm run start",
-    "start": "MONGO_URI=mongodb://macos:abcd1234@localhost:27017/ NODE_ENV=production forever start -a --uid 'mac-api' -v -c node app.js",
+    "start": "MONGO_URI=mongodb://macos:abcd1234@localhost:27017/ NODE_ENV=production forever start -a --uid 'mac-api' -v -c app.js",
     "stop": "NODE_ENV=production forever stop 'mac-api'",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
