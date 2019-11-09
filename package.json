@@ -42,7 +42,7 @@
     "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development  app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
     "production": "forever npm run start",
-    "start": "MONGO_URI=mongodb://macos:abcd1234@localhost:27017/ NODE_ENV=production forever start -a --uid 'mac-api' -v -c node app.js",
+    "start": "MONGO_URI=mongodb://macos:abcd1234@localhost:27017/ NODE_ENV=production forever start -a --uid 'mac-api' -v -c app.js",
     "stop": "NODE_ENV=production forever stop 'mac-api'",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
