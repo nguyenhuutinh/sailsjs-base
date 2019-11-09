@@ -24,7 +24,7 @@ module.exports = {
     shortcuts: false
   },
   port: 80,
-  // ssl: undefined,
+  ssl: undefined,
   custom: {
     baseUrl: 'http://vps264672.vps.ovh.ca',
     internalEmailAddress: 'support@example.com'
