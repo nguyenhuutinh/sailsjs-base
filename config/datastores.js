@@ -36,6 +36,7 @@ module.exports.datastores = {
     user, 
     password,
     ssl,
-    url
+    host: 'localhost',
+    port: '27017',
   }
 };
