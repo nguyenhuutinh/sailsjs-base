@@ -31,7 +31,7 @@ module.exports = {
   },
   datastores: {
     default: {
-      ssl: true,
+      // ssl: true,
     }
   },
   http: {
