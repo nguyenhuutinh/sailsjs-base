@@ -39,7 +39,7 @@
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development  app.js",
+    "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
     "production": "forever npm run start",
     "start": "MONGO_URI=mongodb://macos:abcd1234@localhost:27017/ NODE_ENV=production forever start -a --uid 'mac-api' -v -c node app.js",
