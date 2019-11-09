@@ -20,7 +20,7 @@ switch ( process.env.NODE_ENV ) {
   case 'production':
     database="macos";
     replicaSet = 'production-shard-0';
-    ssl = true;
+    ssl = false;
     user= 'macos';
     password= 'abcd1234';
     break;
