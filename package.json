@@ -16,7 +16,7 @@
     "passport-local": "^1.0.0",
     "sails": "^1.2.3",
     "sails-hook-orm": "^2.1.1",
-    "sails-hook-slugs": "^2.1.0",
+    "sails-hook-slugs": "^4.0.1-beta.0",
     "sails-hook-sockets": "^2.0.0",
     "sails-mongo": "^1.0.1",
     "sendgrid": "^4.7.1",

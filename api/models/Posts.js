@@ -74,7 +74,7 @@ module.exports = {
     },
     
     slug: {
-       type: 'slug',
+      type: 'slug',
       from: 'title',
       
     },
