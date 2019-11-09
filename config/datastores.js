@@ -3,7 +3,8 @@ let ssl = false;
 const url = process.env.MONGO_URI;
 // TODO: This will likely need to be changed based on your setup.
 let database = 'database';
-
+let user= '';
+let password= '';
 switch ( process.env.NODE_ENV ) {
   case 'development':
     replicaSet = null;
@@ -17,8 +18,11 @@ switch ( process.env.NODE_ENV ) {
     ssl = true;
     break;
   case 'production':
+    database="macos";
     replicaSet = 'production-shard-0';
     ssl = true;
+    user= 'macos';
+    password= 'abcd1234';
     break;
 }
 
@@ -29,6 +33,8 @@ module.exports.datastores = {
     authSource: 'admin',
     database,
     replicaSet,
+    user, 
+    password,
     ssl,
     url
   }

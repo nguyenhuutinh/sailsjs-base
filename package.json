@@ -42,7 +42,7 @@
     "dev": "MONGO_URI=mongodb://localhost:27017/ NODE_ENV=development forever -w --watchIgnore 'upload/**'  app.js",
     "staging": "NODE_ENV=staging node --experimental-modules app.js",
     "production": "forever npm run start",
-    "start": "NODE_ENV=production node app.js",
+    "start": "MONGO_URI=mongodb://localhost:27017 NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
     "custom-tests": "MONGO_URI=mongodb://localhost:27017/ PORT=9999 NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.js ./test/controllers/**/*.spec.js"
@@ -55,6 +55,6 @@
   "author": "linuxdream",
   "license": "MIT",
   "engines": {
-    "node": "^12.13"
+    "node": "^12.12"
   }
 }
