@@ -23,7 +23,7 @@ module.exports = {
   blueprints: {
     shortcuts: false
   },
-  port: 80,
+  port: 1337,
   ssl: undefined,
   custom: {
     baseUrl: 'http://vps264672.vps.ovh.ca',
@@ -31,7 +31,7 @@ module.exports = {
   },
   datastores: {
     default: {
-      // ssl: true,
+      ssl: true,
     }
   },
   http: {
@@ -46,9 +46,9 @@ module.exports = {
   },
   security: {
     cors: {
-      // allowOrigins: [
-      //   'https://example.com',
-      // ]
+      allowOrigins: [
+        'http://vps264672.vps.ovh.ca',
+      ]
     }
   },
   session: {
