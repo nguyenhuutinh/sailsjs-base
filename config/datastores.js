@@ -32,7 +32,7 @@ module.exports.datastores = {
     adapter: 'sails-mongo',
     authSource: 'admin',
     database,
-    replicaSet,
+    // replicaSet,
     user, 
     password,
     ssl,
