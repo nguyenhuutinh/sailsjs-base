@@ -23,10 +23,10 @@ module.exports = {
   blueprints: {
     shortcuts: false
   },
-  // port: 80,
+  port: 80,
   // ssl: undefined,
   custom: {
-    baseUrl: 'https://example.com',
+    baseUrl: 'http://vps264672.vps.ovh.ca',
     internalEmailAddress: 'support@example.com'
   },
   datastores: {
@@ -35,8 +35,8 @@ module.exports = {
     }
   },
   http: {
-    cache: 365.25 * 24 * 60 * 60 * 1000 // One year
-    // trustProxy: true,
+    cache: 365.25 * 24 * 60 * 60 * 1000, // One year
+    trustProxy: true,
   },
   log: {
     level: 'debug'
