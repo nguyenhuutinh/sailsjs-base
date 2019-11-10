@@ -47,13 +47,13 @@ module.exports = {
   security: {
     cors: {
       allowOrigins: [
-        'http://vps264672.vps.ovh.ca',
+        'http://vps264672.vps.ovh.ca/',
       ]
     }
   },
   session: {
     cookie: {
-      secure: true,
+      // secure: true,
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
   },
