@@ -47,5 +47,5 @@ module.exports.security = {
    *                                                                           *
    ****************************************************************************/
 
-  csrf: false; //process.env.NODE_ENV === 'production'
+  csrf: false //process.env.NODE_ENV === 'production'
 };
