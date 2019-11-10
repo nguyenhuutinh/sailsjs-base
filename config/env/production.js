@@ -45,11 +45,11 @@ module.exports = {
     migrate: 'safe' // cascadeOnDestroy: false,
   },
   security: {
-    cors: {
-      allowOrigins: [
-        'http://vps264672.vps.ovh.ca/',
-      ]
-    }
+    // cors: {
+    //   allowOrigins: [
+    //     'http://vps264672.vps.ovh.ca/'
+    //   ]
+    // }
   },
   session: {
     cookie: {
@@ -57,5 +57,5 @@ module.exports = {
       maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
   },
-  sockets: {  onlyAllowOrigins: ["http://vps264672.vps.ovh.ca", "http://fullmacapp.com"]}
+  sockets: {  onlyAllowOrigins: ['http://vps264672.vps.ovh.ca', 'http://fullmacapp.com']}
 };
